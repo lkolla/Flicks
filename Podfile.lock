@@ -20,13 +20,16 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - EZLoadingActivity (0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
+  - EZLoadingActivity
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  EZLoadingActivity: 6fd75a05765a4085f4b6fef6f62edf9f144b3139
 
-PODFILE CHECKSUM: 8e2bff198122fe32e69fd53144019d2eaa728bd5
+PODFILE CHECKSUM: 58c0934d8f33f2de2638eec9eb809fdc9f150849
 
 COCOAPODS: 1.0.1

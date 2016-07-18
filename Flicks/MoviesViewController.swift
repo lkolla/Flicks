@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import EZLoadingActivity
 
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -27,6 +28,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         movieTableView.dataSource = self
         
         uiRefreshControl.addTarget(self, action: #selector(MoviesViewController.reloadMovieTable), forControlEvents: .ValueChanged)
+       
+        EZLoadingActivity.show("Loading...", disableUI: true)
         
         movieTableView.addSubview(uiRefreshControl)
 
@@ -63,7 +66,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("count \(self.movies.count)")
+        //print("count \(self.movies.count)")
 
         
         return self.movies.count
@@ -122,17 +125,17 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                                                 
                                                                                 self.movies = responseDictionary["results"] as! [NSDictionary]
                                                                                 
+                                                                                self.movieTableView.reloadData()
                                                                                 
                                                                                 if(self.movies.count == 0 ){
                                                                                     self.displayErrorMessage.hidden = false
+                                                                                    EZLoadingActivity.hide(success: false, animated: true)
                                                                                 }else{
                                                                                     self.displayErrorMessage.hidden = true
+                                                                                    EZLoadingActivity.hide(success: true, animated: false)
                                                                                 }
                                                                                 
                                                                                 
-                                                                                
-                                                                                
-                                                                                self.movieTableView.reloadData()
                                                                             }
                                                                         }
         })
