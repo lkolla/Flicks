@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import AFNetworking
 
 class MovieDetailsViewController: UIViewController {
 
+    var movie: NSDictionary!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var posterImage: UIImageView!
+    
+    @IBOutlet weak var overviewLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        titleLabel.text = movie!["title"] as? String
+        overviewLabel.text = movie!["overview"] as? String
+        posterImage.setImageWithURL(NSURL(string:"https://image.tmdb.org/t/p/original" + (movie["poster_path"] as! String))!)
     }
 
     override func didReceiveMemoryWarning() {
